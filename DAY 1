@@ -1,26 +1,41 @@
 #include <stdio.h>
 
 int main() {
-    int arr[10] = {1, 2, 3, 4, 5}; // array with 5 elements
-    int n = 5; // current number of elements
-    int element = 99; // element to insert
-    int pos = 3; // position to insert (1-based index)
-
-    // shift elements to the right
+    int n, pos, x;
+    
+    // Input number of elements
+    scanf("%d", &n);
+    
+    int arr[n + 1]; // +1 to accommodate new element
+    
+    // Input array elements
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+    
+    // Input position and element to insert
+    scanf("%d", &pos); // 1-based position
+    scanf("%d", &x);
+    
+    // Check if position is valid
+    if (pos < 1 || pos > n + 1) {
+        printf("Invalid position\n");
+        return 0;
+    }
+    
+    // Shift elements to the right
     for (int i = n; i >= pos; i--) {
         arr[i] = arr[i - 1];
     }
-
-    // insert the element
-    arr[pos - 1] = element;
-    n++; // increase size
-
-    // print the array
-    printf("Array after insertion: ");
+    
+    // Insert the element
+    arr[pos - 1] = x;
+    n++; // updated size
+    
+    // Print updated array
     for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
-
+    
     return 0;
 }
-
